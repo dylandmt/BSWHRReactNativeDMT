@@ -1,18 +1,24 @@
-import { StyleSheet, TextInput } from "react-native";
+import React from "react";
+import { StyleSheet, Text, TextInput } from "react-native";
 
 interface Props {
     placeHolder: string,
-    property:string,
+    prop:string,
     value: string,
-    onChangeText: (property:string, value:any) => void
+    onChangeText: (prop:string, value:any) => void
 }
 
-export const BSTextInput  = ({placeHolder, property, value, onChangeText}: Props) => {
+export const BSTextInput  = ({
+    placeHolder,
+    prop,
+    value,
+    onChangeText
+}: Props) => {
     return(
         <TextInput placeholder={placeHolder}
         style={style.textInput}
         value={value}
-        onChange={() => onChangeText(property,value)}
+        onChangeText={text => onChangeText(prop,text)}
         />
     );
 }
