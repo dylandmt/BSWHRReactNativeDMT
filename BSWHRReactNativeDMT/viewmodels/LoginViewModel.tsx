@@ -1,4 +1,5 @@
 import React,{ useState } from "react";
+import auth from '@react-native-firebase/auth';
 
 const LoginViewModel = () => {
 
@@ -15,6 +16,22 @@ const LoginViewModel = () => {
         if(isValidForm()){
             console.log("Email: ", values.email)
             console.log("Password: ", values.password)
+            auth()
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(() => {
+                console.log("Usuario logeado")
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                setError('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                setError('That email address is invalid!');
+                }
+
+                console.error(error);
+            });
         }else{
 
         }
