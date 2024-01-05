@@ -7,11 +7,12 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import LoginViewModel from "../../viewmodels/LoginViewModel";
 import React, { useEffect, useState } from "react";
 import LoginStyle from "./LoginStyle";
+import DI from "../../src/dependencyinjection/ioc";
 
 interface Props extends StackScreenProps<RootStackParamList,"LoginView"> {}; 
 
 export const LoginView = ({navigation, route}: Props) => {
-    const {email, password, error, onChange, tryToLogin,setError} = LoginViewModel()
+  const {email, password, error, onChange, tryToLogin,setError} = DI.resolve("LoginViewModel")
 
     useEffect(() => {
       if(error!==""){
@@ -28,7 +29,7 @@ export const LoginView = ({navigation, route}: Props) => {
           </Text>
           <Image source={ require("../../assets/img/user.png")} style={LoginStyle.loginImage}/>
           <BSTextInput placeHolder='User email' prop="email" value={email} onChangeText={ onChange }/>
-          <BSTextInput placeHolder='Password' prop="password" value={password} onChangeText={ onChange }/>
+          <BSTextInput placeHolder='Password' prop="password" value={password} onChangeText={ onChange } secureTextEntry={true}/>
           <BSButton text='Login' onPress={ tryToLogin}/>
           <Text style={LoginStyle.textRegister}>REGISTRATE AHORA</Text>
         </View>
