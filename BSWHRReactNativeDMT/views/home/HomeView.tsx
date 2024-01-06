@@ -2,14 +2,38 @@ import { StackScreenProps } from "@react-navigation/stack"
 import { RootStackParamList } from "../../navigation/MainStackNavigation";
 import { SafeAreaView, View, Text, StyleSheet, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import React from "react";
+import React, { useState } from "react";
 import HomeStyles from "./HomeStyles";
-import AlbumesList from "../../components/albumeslist/UsersList";
-import AlbumesTitlesList from "../../components/albumeslist/AlbumesTitlesList";
 import UsersList from "../../components/albumeslist/UsersList";
+import { UserInformation } from "../../models/UserInformation";
+
 interface Props extends StackScreenProps<RootStackParamList,"HomeView"> {};
 
 export const HomeView = ({navigation, route}: Props) => {
+
+  const usersData : UserInformation[] = [
+    {
+      name : "Juan",
+      albumes: ["1","2","3"]
+    },
+    {
+      name : "Juan",
+      albumes: ["1","2","3"]
+    },
+    {
+      name : "Juan",
+      albumes: ["1","2","3"]
+    },
+    {
+      name : "Pedro",
+      albumes: ["1","2","3","4"]
+    },
+    {
+      name : "Pedro",
+      albumes: ["1","2"]
+    },
+  ]
+
     return (
         <SafeAreaView style={backgroundStyle}>
         <View>
@@ -17,7 +41,7 @@ export const HomeView = ({navigation, route}: Props) => {
             Home View
           </Text>
         </View>
-        <AlbumesTitlesList/>
+        <UsersList usersData={usersData}/>
       </SafeAreaView>
     );
 };

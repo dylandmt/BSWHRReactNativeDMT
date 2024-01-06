@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { FlatList, View, Image, Dimensions } from "react-native";
+import React from "react";
+import { FlatList } from "react-native";
 import UserItem from "./UserItem";
-const UsersList = () =>{
-    const [albumesData, setAlbumesData] = useState(["1","2","3","4"])
+import { UserInformation } from "../../models/UserInformation";
+
+interface Props {
+    usersData:UserInformation[]
+}
+const UsersList = ({usersData} : Props) =>{
     return(
         <FlatList
-            data={albumesData}
-            renderItem={({ item }) => ( <UserItem/> )}
+        style={{ marginBottom: 100}}
+            data={usersData}
+            renderItem={({ item }) => ( <UserItem userData={item}/> )}
             keyExtractor={(item, index) => index.toString()}/>
     );
 }

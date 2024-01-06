@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Dimensions, FlatList, Image, Text, View } from "react-native";
 import AlbumTitle from "./AlbumTitle";
-const AlbumesTitlesList = () =>{
-    const [albumesData, setAlbumesData] = useState(["1","2","3","4"])
-    const {width} = Dimensions.get('window');
 
+interface Props {
+    albumsData : string[]
+}
+const AlbumesTitlesList = ({albumsData}: Props) =>{
     return(
         <FlatList
-            data={albumesData}
-            renderItem={({ item }) => ( <AlbumTitle/> )}
+            data={albumsData}
+            renderItem={({ item }) => ( <AlbumTitle title={item}/> )}
             keyExtractor={(item, index) => index.toString()}
+            style={{ marginLeft:20, marginBottom: 20}}
             />
     );
 }
