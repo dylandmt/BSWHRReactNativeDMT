@@ -4,7 +4,9 @@ import { SafeAreaView, View, Text, StyleSheet, useColorScheme } from "react-nati
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import React from "react";
 import HomeStyles from "./HomeStyles";
-import AlbumesList from "../../components/AlbumesList";
+import AlbumesList from "../../components/albumeslist/UsersList";
+import AlbumesTitlesList from "../../components/albumeslist/AlbumesTitlesList";
+import UsersList from "../../components/albumeslist/UsersList";
 interface Props extends StackScreenProps<RootStackParamList,"HomeView"> {};
 
 export const HomeView = ({navigation, route}: Props) => {
@@ -15,7 +17,7 @@ export const HomeView = ({navigation, route}: Props) => {
             Home View
           </Text>
         </View>
-        <AlbumesList/>
+        <AlbumesTitlesList/>
       </SafeAreaView>
     );
 };
