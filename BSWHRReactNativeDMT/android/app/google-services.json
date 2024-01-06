@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "670754408639",
+    "project_id": "bswhrreactnativedmt",
+    "storage_bucket": "bswhrreactnativedmt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670754408639:android:a7b540d7f3ea0c6618de0a",
+        "android_client_info": {
+          "package_name": "com.bswhrreactnativedmt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8AoJQtidXEFed25z4wVtLteGhtAU0rTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

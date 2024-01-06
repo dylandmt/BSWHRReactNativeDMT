@@ -12,8 +12,8 @@ const Stack  =  createNativeStackNavigator<RootStackParamList>();
 export const MainStackNavigator = () => {
    return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LoginView" component={LoginView}/>
         <Stack.Screen name="HomeView" component={HomeView}/>
+        <Stack.Screen name="LoginView" component={LoginView}/>
     </Stack.Navigator>
    );
 }

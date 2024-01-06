@@ -1,22 +1,21 @@
 import React,{ useState } from "react";
+import { LoginUseCase } from "../src/domain/usecases/auth/LoginUseCase";
+import { Resource } from "../src/domain/utils/Resource";
 
-const LoginViewModel = () => {
+const LoginViewModel = ({ LoginUseCase }:{ LoginUseCase: LoginUseCase}) => {
 
     const [error, setError] = useState("")
     const [values, setValues] = useState({
         email: "",
         password: ""
     })
-
     const onChange = (prop:string, value:any) =>{
         setValues({...values, [prop]: value})
     }
-    const tryToLogin = () => {
+    const tryToLogin = async () => {
         if(isValidForm()){
-            console.log("Email: ", values.email)
-            console.log("Password: ", values.password)
-        }else{
-
+            const data = await LoginUseCase.execute(values.email,values.password)
+            console.log("DATA", data)
         }
     }
 
