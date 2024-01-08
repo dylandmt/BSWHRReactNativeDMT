@@ -10,7 +10,7 @@ import DI from "../../src/dependencyinjection/ioc";
 interface Props extends StackScreenProps<RootStackParamList,"HomeView"> {};
 
 export const HomeView = ({navigation, route}: Props) => {
-  const {usersDataState, userListData,albumesListData, handleRemove, getUsersList,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
+  const {userListData,albumesListData, handleRemove, getUsersList,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
 
     getUsersList()
     return (
@@ -21,10 +21,7 @@ export const HomeView = ({navigation, route}: Props) => {
           </Text>
         </View>
         <UsersList
-          usersData={userListData}
-          albumesData={albumesListData}
-          onUserSelected={getAlbumesListByUser}
-          onAlbumSelected={()=>{}}/>
+          usersData={userListData}/>
       </SafeAreaView>
     );
 };

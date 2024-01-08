@@ -7,20 +7,14 @@ import { UserData } from "../../models/UserData";
 import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    usersData:UserData[],
-    albumesData:AlbumData[],
-    onAlbumSelected: (albumSelected:AlbumData) => void
-    onUserSelected: (userId:string) => void
+    usersData:UserData[]
 }
-const UsersList = ({usersData,albumesData,onAlbumSelected,onUserSelected} : Props) =>{
+const UsersList = ({usersData} : Props) =>{
     return(
         <FlatList
         style={{ marginBottom: 100}}
             data={usersData}
-            renderItem={({ item }) => ( <UserItem userData={item}
-                albumesData={albumesData}
-                onUserSelected={onUserSelected}
-                onAlbumSelected={onAlbumSelected}/> )}
+            renderItem={({ item }) => ( <UserItem userData={item}/> )}
             keyExtractor={(item, index) => index.toString()}/>
     );
 }

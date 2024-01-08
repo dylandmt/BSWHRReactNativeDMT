@@ -5,18 +5,16 @@ import { UserInformation } from "../../models/UserInformation";
 import { AlbumInformation } from "../../models/AlbumInformation";
 import { UserData } from "../../models/UserData";
 import { AlbumData } from "../../models/AlbumData";
+import DI from "../../src/dependencyinjection/ioc";
 
 interface Props {
-    userData:UserData,
-    albumesData:AlbumData[],
-    onAlbumSelected: (albumSelected:AlbumData) => void,
-    onUserSelected: (userId:string) => void
+    userData:UserData
 }
-const UserItem = ({userData,albumesData,onAlbumSelected,onUserSelected}:Props) =>{
-    const [showAlbumesTitlesList, setShowAlbumesTitlesList] = useState(false)
+const UserItem = ({userData}:Props) =>{
+    const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
     return (
         <View>
-            <TouchableOpacity onPress={()=> onUserSelected(userData.id.toString())}>
+            <TouchableOpacity onPress={()=>  getAlbumesListByUser(userData.id.toString())}>
                 <View
                 style={{
                     flex: 1,
@@ -32,7 +30,7 @@ const UserItem = ({userData,albumesData,onAlbumSelected,onUserSelected}:Props) =
                     </Text>
                 </View>
             </TouchableOpacity>
-            {showAlbumesTitlesList ? <AlbumesTitlesList albumesData={albumesData} onAlbumSelected={onAlbumSelected}/> : undefined}
+            { albumesListData ? <AlbumesTitlesList albumesData={albumesListData}/> : undefined}
         </View>
     );
 }

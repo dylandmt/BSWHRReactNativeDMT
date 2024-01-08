@@ -4,18 +4,17 @@ import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    albumData : AlbumData,
-    onAlbumSelected: (albumSelected:AlbumData) => void
+    albumData : AlbumData
 }
 
-const AlbumTitle = ({albumData,onAlbumSelected}:Props) =>{
+const AlbumTitle = ({albumData}:Props) =>{
     return (
         <View
         style={style.mainContainer}>
         <Text style={style.title}>
             {albumData.title +""+ albumData.id}
         </Text>
-        <TouchableOpacity onPress={() => {onAlbumSelected(albumData)}}>
+        <TouchableOpacity onPress={() => {}}>
             <Image source={require("../../assets/img/categories.png")} style={style.icon}/>
         </TouchableOpacity>
         </View>
