@@ -1,18 +1,20 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { AlbumInformation } from "../../models/AlbumInformation";
 
 interface Props {
-    title : string
+    albumData : AlbumInformation,
+    onAlbumSelected: (albumSelected:AlbumInformation) => void
 }
 
-const AlbumTitle = ({title}:Props) =>{
+const AlbumTitle = ({albumData,onAlbumSelected}:Props) =>{
     return (
         <View
         style={style.mainContainer}>
         <Text style={style.title}>
-            {title}
+            {albumData.title +""+ albumData.id}
         </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => {onAlbumSelected(albumData)}}>
             <Image source={require("../../assets/img/categories.png")} style={style.icon}/>
         </TouchableOpacity>
         </View>

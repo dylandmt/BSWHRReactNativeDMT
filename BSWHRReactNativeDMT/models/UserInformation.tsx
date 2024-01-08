@@ -1,4 +1,8 @@
+import { AlbumInformation } from "./AlbumInformation"
+
 export interface UserInformation {
-    name: string
-    albumes: string []
+    id: string
+    name: string,
+    username : string,
+    albumes : AlbumInformation []
 }
