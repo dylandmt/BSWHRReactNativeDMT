@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserInformation } from "../models/UserInformation";
 import { AlbumInformation } from "../models/AlbumInformation";
+import { UserData } from "../models/UserData";
+import { HomeUseCase } from "../src/domain/usecases/home/HomeUseCase";
+import { Resource } from "../src/domain/utils/Resource";
+import { AlbumData } from "../models/AlbumData";
 
-const HomeViewModel = () => {
+const HomeViewModel = ({HomeUseCase}:{HomeUseCase: HomeUseCase}) => {
 
     const usersData : UserInformation[] = [
       {
@@ -52,7 +56,9 @@ const HomeViewModel = () => {
       }
     ]
       
+  const [userListData, setUserListData] = useState<UserData[]>()
   const [usersDataState, setUsersDataState] = useState(usersData)
+   const [albumesListData, setAlbumesListData] = useState<AlbumData[]>([])
 
   function handleRemove(albumSelected:AlbumInformation) {
     const userDataFiltered = usersDataState.find((user) => user.id===albumSelected.userId) as UserInformation
@@ -61,9 +67,21 @@ const HomeViewModel = () => {
     setUsersDataState(userDataUpdated)
   }
 
+  const getUsersList = async () =>{
+      await HomeUseCase.getAllUsers().then(users => setUserListData(users))
+  }
+
+  const getAlbumesListByUser= async (userId:string) =>{
+    await HomeUseCase.getAlbumesListByUser(userId).then(albumes => setAlbumesListData(albumes))
+  }
+  
   return ({ 
     usersDataState,
-    handleRemove
+    userListData,
+    albumesListData,
+    handleRemove,
+    getUsersList,
+    getAlbumesListByUser
   });
 }
 

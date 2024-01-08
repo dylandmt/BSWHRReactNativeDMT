@@ -1,10 +1,11 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AlbumInformation } from "../../models/AlbumInformation";
+import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    albumData : AlbumInformation,
-    onAlbumSelected: (albumSelected:AlbumInformation) => void
+    albumData : AlbumData,
+    onAlbumSelected: (albumSelected:AlbumData) => void
 }
 
 const AlbumTitle = ({albumData,onAlbumSelected}:Props) =>{

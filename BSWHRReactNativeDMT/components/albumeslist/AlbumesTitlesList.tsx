@@ -3,10 +3,11 @@ import { Dimensions, FlatList, Image, Text, View } from "react-native";
 import AlbumTitle from "./AlbumTitle";
 import { UserInformation } from "../../models/UserInformation";
 import { AlbumInformation } from "../../models/AlbumInformation";
+import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    albumesData:AlbumInformation [],
-    onAlbumSelected: (albumSelected:AlbumInformation) => void
+    albumesData:AlbumData [],
+    onAlbumSelected: (albumSelected:AlbumData) => void
 }
 const AlbumesTitlesList = ({albumesData,onAlbumSelected}: Props) =>{
     return(

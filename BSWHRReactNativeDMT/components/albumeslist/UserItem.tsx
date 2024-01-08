@@ -3,16 +3,20 @@ import { Dimensions, Image, Text, View, TouchableOpacity} from "react-native";
 import AlbumesTitlesList from "./AlbumesTitlesList";
 import { UserInformation } from "../../models/UserInformation";
 import { AlbumInformation } from "../../models/AlbumInformation";
+import { UserData } from "../../models/UserData";
+import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    userData:UserInformation,
-    onAlbumSelected: (albumSelected:AlbumInformation) => void
+    userData:UserData,
+    albumesData:AlbumData[],
+    onAlbumSelected: (albumSelected:AlbumData) => void,
+    onUserSelected: (userId:string) => void
 }
-const UserItem = ({userData,onAlbumSelected}:Props) =>{
+const UserItem = ({userData,albumesData,onAlbumSelected,onUserSelected}:Props) =>{
     const [showAlbumesTitlesList, setShowAlbumesTitlesList] = useState(false)
     return (
         <View>
-            <TouchableOpacity onPress={()=> setShowAlbumesTitlesList(!showAlbumesTitlesList)}>
+            <TouchableOpacity onPress={()=> onUserSelected(userData.id.toString())}>
                 <View
                 style={{
                     flex: 1,
@@ -24,11 +28,11 @@ const UserItem = ({userData,onAlbumSelected}:Props) =>{
                     alignItems: "center"
                 }}>
                     <Text style={{ fontSize: 30, fontWeight: "bold", color: "black", margin: 10}}>
-                        User name {userData.username}
+                        {userData.username}
                     </Text>
                 </View>
             </TouchableOpacity>
-            {showAlbumesTitlesList ? <AlbumesTitlesList albumesData={userData.albumes} onAlbumSelected={onAlbumSelected}/> : undefined}
+            {showAlbumesTitlesList ? <AlbumesTitlesList albumesData={albumesData} onAlbumSelected={onAlbumSelected}/> : undefined}
         </View>
     );
 }
