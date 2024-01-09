@@ -1,27 +1,22 @@
 import React from "react";
 import { FlatList } from "react-native";
 import UserItem from "./UserItem";
-import { UserInformation } from "../../models/UserInformation";
-import { AlbumInformation } from "../../models/AlbumInformation";
 import { UserData } from "../../models/UserData";
-import { AlbumData } from "../../models/AlbumData";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/MainStackNavigation";
 
 interface Props {
     usersData:UserData[],
-    navigationManager : StackNavigationProp<RootStackParamList>,
-    handleAlbumRemoved : (albumdata : AlbumData) => void
+    navigationManager : StackNavigationProp<RootStackParamList>
 }
-const UsersList = ({usersData,navigationManager,handleAlbumRemoved} : Props) =>{
+const UsersList = ({usersData,navigationManager} : Props) =>{
     return(
         <FlatList
         style={{ marginBottom: 100}}
             data={usersData}
             renderItem={({ item }) => (
             <UserItem userData={item}
-                navigationManager={navigationManager}
-                handleAlbumRemoved={handleAlbumRemoved}/> )}
+                navigationManager={navigationManager}/> )}
             keyExtractor={(item, index) => index.toString()}/>
     );
 }

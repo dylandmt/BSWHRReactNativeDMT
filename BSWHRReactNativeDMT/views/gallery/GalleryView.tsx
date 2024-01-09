@@ -1,27 +1,26 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/MainStackNavigation";
-import React from "react";
-import { SafeAreaView, View, Text } from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView, View } from "react-native";
 import AlbumImageGrid from "../../components/AlbumImagesGrid";
 import DI from "../../src/dependencyinjection/ioc";
-import { AlbumData } from "../../models/AlbumData";
-import { useRoute } from "@react-navigation/native";
+import { BSTopBar } from "../../components/BSTopBar";
 
 interface Props extends StackScreenProps<RootStackParamList,"GalleryView"> {};
 export const GalleryView = ({navigation, route}: Props) => {
-  const {imagesListData, albumSelected, getAllImagesByAlbumID, handleAlbumSelected} = DI.resolve("GalleryViewModel")
-
+  const {imagesListData, getAllImagesByAlbumID, getAllImages} = DI.resolve("GalleryViewModel")
+  const [albumTitle, setAlbumTitle] = useState("")
   React.useEffect(() => {
     if (route.params?.albumData) {
-        handleAlbumSelected(route.params.data as AlbumData);
-        const {id,title,userId} = route.params.albumData
+        const {id,title} = route.params.albumData
         getAllImagesByAlbumID(id)
-        console.log(id)
+        setAlbumTitle(title)
     }
 }, [route.params])
     return (
         <SafeAreaView>
         <View>
+          <BSTopBar title={albumTitle} onBackAction={navigation.goBack} onOptionsAction={getAllImages}/>
           <AlbumImageGrid imagesListData={imagesListData}/>
         </View>
       </SafeAreaView>
