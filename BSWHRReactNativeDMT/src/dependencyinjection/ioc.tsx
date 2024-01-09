@@ -3,7 +3,7 @@ import LoginViewModel from "../../viewmodels/LoginViewModel";
 import * as AuthDataSource from "../data/datasource/remote/AuthDataSource"
 import { AuthRepository } from "../data/datasource/repository/AuthRepository";
 import { LoginUseCase } from "../domain/usecases/auth/LoginUseCase";
-import HomeViewModel from "../../viewmodels/HomeViewModel";
+import HomeViewModel from "../../views/home/HomeViewModel";
 import { HomeUseCase } from "../domain/usecases/home/HomeUseCase";
 import { HomeRepository } from "../data/datasource/repository/HomeRepository";
 import * as HomeDataSource  from "../data/datasource/remote/HomeDataSource";

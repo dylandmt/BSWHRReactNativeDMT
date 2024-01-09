@@ -1,7 +1,5 @@
 import React,{ useState } from "react";
 import { LoginUseCase } from "../src/domain/usecases/auth/LoginUseCase";
-import { Resource } from "../src/domain/utils/Resource";
-
 const LoginViewModel = ({ LoginUseCase }:{ LoginUseCase: LoginUseCase}) => {
 
     const [error, setError] = useState("")

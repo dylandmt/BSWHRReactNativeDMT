@@ -13,6 +13,7 @@ interface Props {
 }
 
 const AlbumTitle = ({albumData,navigationManager, handleAlbumRemoved}:Props) =>{
+
     return (
         <View style={style.mainContainer}>
             <View style={{flex:1}}>
