@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { FlatList, View, Image, Dimensions } from "react-native"; 
-const AlbumImageGrid = () =>{
-    const [albumesData, setAlbumesData] = useState(["1","2","3","4"])
-    const {width} = Dimensions.get('window');
+import { ImageInformation } from "../models/ImageInformation";
 
+
+interface Props {
+    imagesListData:ImageInformation[]
+}
+const AlbumImageGrid = ({imagesListData}:Props) => {
+    const {width} = Dimensions.get('window');
     return(
         <FlatList
-            data={albumesData}
+            data={imagesListData}
             renderItem={({ item }) => (
                 <View
                 style={{
@@ -14,7 +18,7 @@ const AlbumImageGrid = () =>{
                     flexDirection: 'column',
                     margin: 1
                 }}>
-                <Image style={{ width:width*0.3,height: width*0.3, flex:1}} resizeMode="cover" source={require("../assets/img/user_form.png")}/>
+                <Image style={{ width:width*0.3,height: width*0.3, flex:1}} resizeMode="cover" source={{uri:item.url}}/>
                 </View>
             )}
             //Setting the number of column
