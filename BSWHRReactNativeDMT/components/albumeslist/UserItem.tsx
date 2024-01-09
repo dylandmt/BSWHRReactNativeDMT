@@ -8,13 +8,15 @@ import { RootStackParamList } from "../../navigation/MainStackNavigation";
 
 interface Props {
     userData:UserData,
+    elementIndex:number,
+    onElementSelected:(index:number) => void,
     navigationManager : StackNavigationProp<RootStackParamList>
 }
-const UserItem = ({userData,navigationManager}:Props) =>{
+const UserItem = ({userData,elementIndex,onElementSelected,navigationManager}:Props) =>{
     const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
     return (
         <View>
-            <TouchableOpacity onPress={()=>  getAlbumesListByUser(userData.id.toString())}>
+            <TouchableOpacity onPress={()=>  {getAlbumesListByUser(userData.id.toString()),onElementSelected(elementIndex)}}>
                 <View
                 style={{
                     flex: 1,
