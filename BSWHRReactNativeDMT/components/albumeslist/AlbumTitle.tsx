@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
-import DI from "../../src/dependencyinjection/ioc";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/MainStackNavigation";
 

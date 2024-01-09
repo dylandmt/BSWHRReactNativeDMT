@@ -1,7 +1,6 @@
 import { AlbumData } from "../../../../models/AlbumData";
-import { UserData, UsersData } from "../../../../models/UserData";
+import { UserData } from "../../../../models/UserData";
 import { HomeRepository } from "../../../data/datasource/repository/HomeRepository";
-import { Resource } from "../../utils/Resource";
 
 export interface HomeUseCase{
     getAllUsers():Promise<UserData[]>,

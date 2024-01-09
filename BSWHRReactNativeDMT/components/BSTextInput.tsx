@@ -1,5 +1,5 @@
 import React from "react";
-import { KeyboardType, StyleSheet, Text, TextInput } from "react-native";
+import { KeyboardType, StyleSheet, TextInput } from "react-native";
 
 interface Props {
     placeHolder: string,

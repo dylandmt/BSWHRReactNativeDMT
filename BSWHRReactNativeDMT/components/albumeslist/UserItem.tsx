@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, TouchableOpacity} from "react-native";
 import AlbumesTitlesList from "./AlbumesTitlesList";
 import { UserData } from "../../models/UserData";
@@ -14,9 +14,13 @@ interface Props {
 }
 const UserItem = ({userData,elementIndex,onElementSelected,navigationManager}:Props) =>{
     const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
+    const [showAlbumesList, setShowAlbumesList] = useState(false)
     return (
         <View style={{padding:10}}>
-            <TouchableOpacity onPress={()=>  {getAlbumesListByUser(userData.id.toString()),onElementSelected(elementIndex)}}>
+            <TouchableOpacity onPress={()=> {
+                getAlbumesListByUser(userData.id.toString()),
+                onElementSelected(elementIndex),
+                setShowAlbumesList(!showAlbumesList)}}>
                 <View
                 style={{
                     flex: 1,
@@ -34,7 +38,7 @@ const UserItem = ({userData,elementIndex,onElementSelected,navigationManager}:Pr
                     </Text>
                 </View>
             </TouchableOpacity>
-            { albumesListData ? <AlbumesTitlesList
+            { albumesListData && showAlbumesList? <AlbumesTitlesList
              albumesData={albumesListData}
              navigationManager={navigationManager}/> : undefined}
         </View>

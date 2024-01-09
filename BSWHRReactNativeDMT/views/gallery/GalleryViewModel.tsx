@@ -4,9 +4,9 @@ import { ImageInformation } from "../../models/ImageInformation";
 const GalleryViewModel = ({ GalleryUseCase }:{ GalleryUseCase: GalleryUseCase}) => {
 
     const [imagesListData, setImagesListData] = useState<ImageInformation[]>()
-
     const [albumTitle, setAlbumTitle] = useState("")
     const [albumId, setAlbumId] = useState("")
+    const [imageSelected, setImageSelected] = useState("")
     const [getAllImagesCalled, setSetAllImagesCalled] = useState(false)
 
     const setAlbumInformation = (id:string,title:string) =>{
@@ -39,7 +39,8 @@ const GalleryViewModel = ({ GalleryUseCase }:{ GalleryUseCase: GalleryUseCase}) 
         setAlbumInformation,
         getAllImagesByAlbumID,
         getAllImages,
-        handleGetAllImagesCalled
+        handleGetAllImagesCalled,
+        imageSelected, setImageSelected
     };
 }
 

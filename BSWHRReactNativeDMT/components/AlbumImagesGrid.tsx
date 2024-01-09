@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { FlatList, View, Image, Dimensions, Text } from "react-native"; 
+import React from "react";
+import { FlatList, View, Image, Dimensions, Pressable } from "react-native"; 
 import { ImageInformation } from "../models/ImageInformation";
 
 
 interface Props {
-    imagesListData:ImageInformation[]
+    imagesListData:ImageInformation[],
+    onLongPress:(imageUrl:string) => void
 }
-const AlbumImageGrid  = ({imagesListData}:Props) => {
+const AlbumImageGrid  = ({imagesListData,onLongPress}:Props) => {
     const {width} = Dimensions.get('window');
     return(
         <FlatList
@@ -21,11 +22,14 @@ const AlbumImageGrid  = ({imagesListData}:Props) => {
                     alignContent:"center",
                     alignItems:"center"
                 }}>
-                    <View style={{width:width*0.3,height: width*0.3,}}>
-                        <Image style={{ flex:1, borderRadius:15}} 
-                            resizeMode="cover"
-                            source={{uri:item.url}}/>
-                    </View>
+                    <Pressable onLongPress={()=>onLongPress(item.url)}>
+                        <View style={{width:width*0.3,height: width*0.3,}}>
+                            <Image style={{ flex:1, borderRadius:15}} 
+                                resizeMode="cover"
+                                source={{uri:item.url}}/>
+                        </View>
+                    </Pressable>
+                    
                 </View>
             )}
             numColumns={3}
