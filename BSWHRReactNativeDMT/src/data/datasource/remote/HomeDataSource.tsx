@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { Resource, Succes, GeneralError } from "../../../domain/utils/Resource";
-import { UserData, UsersData } from "../../../../models/UserData";
+import { UserData } from "../../../../models/UserData";
 import { AlbumData } from "../../../../models/AlbumData";
 
 export interface HomeDataSource {

@@ -3,18 +3,20 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
 import DI from "../../src/dependencyinjection/ioc";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../navigation/MainStackNavigation";
 
 interface Props {
     albumData : AlbumData,
-    handleAlbumRemoved : (albumdata : AlbumData) => void,
-    onAlbumSelected: () => void
+    navigationManager : StackNavigationProp<RootStackParamList>,
+    handleAlbumRemoved : (albumdata : AlbumData) => void
 }
 
-const AlbumTitle = ({albumData, handleAlbumRemoved,onAlbumSelected}:Props) =>{
+const AlbumTitle = ({albumData,navigationManager, handleAlbumRemoved}:Props) =>{
     return (
         <View
         style={style.mainContainer}>
-            <TouchableOpacity onPress={()=>onAlbumSelected()}>
+            <TouchableOpacity onPress={()=>{navigationManager.navigate("GalleryView",{albumData})}}>
                 <Text style={style.title}>
                 {albumData.title +""+ albumData.id}
                 </Text>

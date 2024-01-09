@@ -65,7 +65,7 @@ const HomeViewModel = ({HomeUseCase}:{HomeUseCase: HomeUseCase}) => {
   const [albumesListData, setAlbumesListData] = useState<AlbumData[]>()
   const [albumesDeleted, setAlbumesDeleted] = useState<AlbumData[]>()
   const [albumToDelete, setAlbumToDelete] = useState({"id": 0, "title": "", "userId": 0})
-
+  const [albumIDSelected, setAlbumIDSelected] = useState("")
   function handleRemove(albumSelected:AlbumInformation) {
     const userDataFiltered = usersDataState.find((user) => user.id===albumSelected.userId) as UserInformation
     const albumesFiltered = userDataFiltered.albumes.filter((album) => album.id !== albumSelected.id) as AlbumInformation[]
@@ -76,6 +76,9 @@ const HomeViewModel = ({HomeUseCase}:{HomeUseCase: HomeUseCase}) => {
   const handleAlbumRemoved = async (albumData:AlbumData) =>{
     setAlbumToDelete(prev => albumData)
   }
+  const handleAlbumIDSelected = async (albumID:string) => {
+    setAlbumIDSelected(albumID)
+  }
       
 
   const getUsersList = async () =>{
@@ -84,7 +87,6 @@ const HomeViewModel = ({HomeUseCase}:{HomeUseCase: HomeUseCase}) => {
 
   const getAlbumesListByUser = async (userId:string) =>{
       const albumesUser = await HomeUseCase.getAlbumesListByUser(userId).then(albumes => albumes as AlbumData[])
-      //console.log("USER"+userId, albumesUser)
       setAlbumesListData(albumesUser)
   }
   
@@ -93,10 +95,12 @@ const HomeViewModel = ({HomeUseCase}:{HomeUseCase: HomeUseCase}) => {
     userListData,
     albumesListData,
     albumToDelete,
+    albumIDSelected,
     handleRemove,
     getUsersList,
     handleAlbumRemoved,
-    getAlbumesListByUser
+    getAlbumesListByUser,
+    handleAlbumIDSelected
   });
 }
 

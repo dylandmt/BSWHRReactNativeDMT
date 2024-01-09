@@ -11,8 +11,7 @@ import { AlbumData } from "../../models/AlbumData";
 interface Props extends StackScreenProps<RootStackParamList,"HomeView"> {};
 
 export const HomeView = ({navigation, route}: Props) => {
-  const {userListData,albumToDelete,albumesListData, handleAlbumRemoved, getUsersList,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
-
+  const {userListData, handleAlbumRemoved, getUsersList,handleAlbumIDSelected} =  DI.resolve("HomeViewModel")
     getUsersList()
     return (
         <SafeAreaView style={backgroundStyle}>
@@ -22,8 +21,9 @@ export const HomeView = ({navigation, route}: Props) => {
           </Text>
         </View>
         <UsersList
-          usersData={userListData} handleAlbumRemoved={handleAlbumRemoved}
-          onAlbumSelected={() => {navigation.navigate("LoginView")}}/>
+          usersData={userListData} handleAlbumRemoved={()=>{}}
+          navigationManager={navigation}
+          />
       </SafeAreaView>
     );
 };

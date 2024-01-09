@@ -7,16 +7,26 @@ import HomeViewModel from "../../viewmodels/HomeViewModel";
 import { HomeUseCase } from "../domain/usecases/home/HomeUseCase";
 import { HomeRepository } from "../data/datasource/repository/HomeRepository";
 import * as HomeDataSource  from "../data/datasource/remote/HomeDataSource";
+import * as GalleryDataSource from "../data/datasource/remote/GalleryDataSource"
+import GalleryViewModel from "../../views/gallery/GalleryViewModel";
+import { GalleryUseCase } from "../domain/usecases/gallery/GalleryUseCase";
+import { GalleryRepository } from "../data/datasource/repository/GalleryRepository";
 const container = createContainer();
 container.register({
     LoginViewModel: asFunction(LoginViewModel),
-    HomeViewModel: asFunction(HomeViewModel),
+    LoginUseCase: asFunction(LoginUseCase),
     AuthDataSource: asValue(AuthDataSource),
     AuthRepository: asFunction(AuthRepository),
-    LoginUseCase: asFunction(LoginUseCase),
+
+    HomeViewModel: asFunction(HomeViewModel),
     HomeUseCase: asFunction(HomeUseCase),
     HomeRepository: asFunction(HomeRepository),
-    HomeDataSource: asValue(HomeDataSource)
+    HomeDataSource: asValue(HomeDataSource),
+
+    GalleryViewModel: asFunction(GalleryViewModel),
+    GalleryUseCase: asFunction(GalleryUseCase),
+    GalleryRepository: asFunction(GalleryRepository),
+    GalleryDataSource: asValue(GalleryDataSource)
 
 });
 

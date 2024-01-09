@@ -6,13 +6,15 @@ import { AlbumInformation } from "../../models/AlbumInformation";
 import { UserData } from "../../models/UserData";
 import { AlbumData } from "../../models/AlbumData";
 import DI from "../../src/dependencyinjection/ioc";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../navigation/MainStackNavigation";
 
 interface Props {
     userData:UserData,
-    handleAlbumRemoved : (albumdata : AlbumData) => void,
-    onAlbumSelected :  () => void
+    navigationManager : StackNavigationProp<RootStackParamList>,
+    handleAlbumRemoved : (albumdata : AlbumData) => void
 }
-const UserItem = ({userData,handleAlbumRemoved,onAlbumSelected}:Props) =>{
+const UserItem = ({userData,navigationManager,handleAlbumRemoved}:Props) =>{
     const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
     return (
         <View>
@@ -32,7 +34,10 @@ const UserItem = ({userData,handleAlbumRemoved,onAlbumSelected}:Props) =>{
                     </Text>
                 </View>
             </TouchableOpacity>
-            { albumesListData ? <AlbumesTitlesList albumesData={albumesListData} onAlbumSelected={onAlbumSelected}handleAlbumRemoved={handleAlbumRemoved}/> : undefined}
+            { albumesListData ? <AlbumesTitlesList
+             albumesData={albumesListData}
+             navigationManager={navigationManager}
+             handleAlbumRemoved={handleAlbumRemoved}/> : undefined}
         </View>
     );
 }
