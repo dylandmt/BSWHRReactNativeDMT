@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import HomeStyles from "./HomeStyles";
 import UsersList from "../../components/albumeslist/UsersList";
 import DI from "../../src/dependencyinjection/ioc";
+import { LinearGradient } from "react-native-linear-gradient";
 
 interface Props extends StackScreenProps<RootStackParamList,"HomeView"> {};
 
@@ -14,12 +15,14 @@ export const HomeView = ({navigation, route}: Props) => {
     getUsersList()
     return (
         <SafeAreaView style={backgroundStyle}>
-        <View>
-          <Text style={HomeStyles.loginTitle} >
-            Home View
-          </Text>
-        </View>
-        <UsersList usersData={userListData} navigationManager={navigation}/>
+        <LinearGradient start={{x: 0, y: 1}} end={{x: 1, y: 0}} colors={['white', 'white']}>
+          <View>
+            <Text style={HomeStyles.loginTitle} >
+              Home View
+            </Text>
+          </View>
+          <UsersList usersData={userListData} navigationManager={navigation}/>
+        </LinearGradient>
       </SafeAreaView>
     );
 };

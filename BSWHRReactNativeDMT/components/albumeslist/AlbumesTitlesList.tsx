@@ -26,7 +26,7 @@ const AlbumesTitlesList = ({albumesData,navigationManager}: Props) =>{
                 handleAlbumRemoved={removeItem}/>
                 )}
             keyExtractor={(item, index) => index.toString()}
-            style={{ marginLeft:20, marginBottom: 20}}
+            style={{ marginHorizontal:20, marginBottom: 20}}
             />
     );
 }

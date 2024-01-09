@@ -15,7 +15,7 @@ interface Props {
 const UserItem = ({userData,elementIndex,onElementSelected,navigationManager}:Props) =>{
     const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
     return (
-        <View>
+        <View style={{padding:10}}>
             <TouchableOpacity onPress={()=>  {getAlbumesListByUser(userData.id.toString()),onElementSelected(elementIndex)}}>
                 <View
                 style={{
@@ -23,11 +23,13 @@ const UserItem = ({userData,elementIndex,onElementSelected,navigationManager}:Pr
                     flexDirection: "row",
                     margin: 1,
                     height: 100,
-                    borderBlockColor: "black",
-                    borderWidth: 1,
-                    alignItems: "center"
+                    borderRadius: 15,
+                    backgroundColor: "#18499d",
+                    alignItems: "center",
+                    borderColor: "#fdbc15",
+                    borderWidth:2,
                 }}>
-                    <Text style={{ fontSize: 30, fontWeight: "bold", color: "black", margin: 10}}>
+                    <Text style={{ fontSize: 30, fontWeight: "bold", color: "white", margin: 10}}>
                         {userData.username}
                     </Text>
                 </View>

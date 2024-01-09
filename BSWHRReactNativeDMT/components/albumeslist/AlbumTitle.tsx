@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
@@ -32,7 +32,6 @@ const AlbumTitle = ({albumData,navigationManager, handleAlbumRemoved}:Props) =>{
     );
 }
 
-
 const style = StyleSheet.create({
     mainContainer: {
       flexDirection:"row", 
@@ -52,7 +51,7 @@ const style = StyleSheet.create({
         fontWeight:"bold",
         flex:1
     },
-    icon: { width: 20, height: 20, marginHorizontal: 10}
+    icon:{ width:25, height:25, margin:10}
   });
   
 

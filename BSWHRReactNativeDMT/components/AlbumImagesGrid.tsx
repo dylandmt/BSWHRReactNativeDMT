@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, View, Image, Dimensions } from "react-native"; 
+import { FlatList, View, Image, Dimensions, Text } from "react-native"; 
 import { ImageInformation } from "../models/ImageInformation";
 
 
@@ -16,9 +16,16 @@ const AlbumImageGrid  = ({imagesListData}:Props) => {
                 style={{
                     flex: 1,
                     flexDirection: 'column',
-                    margin: 1
+                    margin: 1,
+                    width:width*0.3,height: width*0.3,
+                    alignContent:"center",
+                    alignItems:"center"
                 }}>
-                <Image style={{ width:width*0.3,height: width*0.3, flex:1}} resizeMode="cover" source={{uri:item.url}}/>
+                    <View style={{width:width*0.3,height: width*0.3,}}>
+                        <Image style={{ flex:1, borderRadius:15}} 
+                            resizeMode="cover"
+                            source={{uri:item.url}}/>
+                    </View>
                 </View>
             )}
             numColumns={3}
