@@ -7,7 +7,6 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import React, { useEffect } from "react";
 import LoginStyle from "./LoginStyle";
 import DI from "../../src/dependencyinjection/ioc";
-import { GeneralError, Succes } from "../../src/domain/utils/Resource";
 
 interface Props extends StackScreenProps<RootStackParamList,"LoginView"> {}; 
 
