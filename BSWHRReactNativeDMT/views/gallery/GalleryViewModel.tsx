@@ -8,7 +8,11 @@ const GalleryViewModel = ({ GalleryUseCase }:{ GalleryUseCase: GalleryUseCase}) 
     const [albumSelected, setAlbumSelected] = useState({"id": 0, "title": "", "userId": 0})
 
     const getAllImagesByAlbumID = async (albumId:string) =>{
-        await GalleryUseCase.getAllImagesByAlbumID(albumId).then(data => setImagesListData(data))
+        await GalleryUseCase.getAllImagesByAlbumID(albumId).then(data => {setImagesListData(data)})
+    }
+
+    const getAllImages =  async () =>{
+        await GalleryUseCase.getAllImages().then(data => setImagesListData(data))
     }
     const handleAlbumSelected = async (albumData:AlbumData) =>{
         setAlbumSelected(albumData)
@@ -17,7 +21,8 @@ const GalleryViewModel = ({ GalleryUseCase }:{ GalleryUseCase: GalleryUseCase}) 
         imagesListData,
         albumSelected,
         getAllImagesByAlbumID,
-        handleAlbumSelected
+        handleAlbumSelected,
+        getAllImages
     };
 }
 
