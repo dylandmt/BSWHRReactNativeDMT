@@ -2,19 +2,24 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
+import DI from "../../src/dependencyinjection/ioc";
 
 interface Props {
-    albumData : AlbumData
+    albumData : AlbumData,
+    handleAlbumRemoved : (albumdata : AlbumData) => void,
+    onAlbumSelected: () => void
 }
 
-const AlbumTitle = ({albumData}:Props) =>{
+const AlbumTitle = ({albumData, handleAlbumRemoved,onAlbumSelected}:Props) =>{
     return (
         <View
         style={style.mainContainer}>
-        <Text style={style.title}>
-            {albumData.title +""+ albumData.id}
-        </Text>
-        <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={()=>onAlbumSelected()}>
+                <Text style={style.title}>
+                {albumData.title +""+ albumData.id}
+                </Text>
+            </TouchableOpacity>
+        <TouchableOpacity onPress={() => {handleAlbumRemoved(albumData)}}>
             <Image source={require("../../assets/img/categories.png")} style={style.icon}/>
         </TouchableOpacity>
         </View>

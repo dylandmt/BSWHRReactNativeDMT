@@ -6,13 +6,15 @@ import { AlbumInformation } from "../../models/AlbumInformation";
 import { AlbumData } from "../../models/AlbumData";
 
 interface Props {
-    albumesData:AlbumData []
+    albumesData:AlbumData [],
+    handleAlbumRemoved : (albumdata : AlbumData) => void,
+    onAlbumSelected :  () => void
 }
-const AlbumesTitlesList = ({albumesData}: Props) =>{
+const AlbumesTitlesList = ({albumesData,handleAlbumRemoved,onAlbumSelected}: Props) =>{
     return(
         <FlatList
             data={albumesData}
-            renderItem={({ item }) => ( <AlbumTitle albumData={item}/> )}
+            renderItem={({ item }) => ( <AlbumTitle albumData={item} onAlbumSelected={onAlbumSelected} handleAlbumRemoved={handleAlbumRemoved}/> )}
             keyExtractor={(item, index) => index.toString()}
             style={{ marginLeft:20, marginBottom: 20}}
             />

@@ -8,9 +8,11 @@ import { AlbumData } from "../../models/AlbumData";
 import DI from "../../src/dependencyinjection/ioc";
 
 interface Props {
-    userData:UserData
+    userData:UserData,
+    handleAlbumRemoved : (albumdata : AlbumData) => void,
+    onAlbumSelected :  () => void
 }
-const UserItem = ({userData}:Props) =>{
+const UserItem = ({userData,handleAlbumRemoved,onAlbumSelected}:Props) =>{
     const {albumesListData,getAlbumesListByUser} =  DI.resolve("HomeViewModel")
     return (
         <View>
@@ -30,7 +32,7 @@ const UserItem = ({userData}:Props) =>{
                     </Text>
                 </View>
             </TouchableOpacity>
-            { albumesListData ? <AlbumesTitlesList albumesData={albumesListData}/> : undefined}
+            { albumesListData ? <AlbumesTitlesList albumesData={albumesListData} onAlbumSelected={onAlbumSelected}handleAlbumRemoved={handleAlbumRemoved}/> : undefined}
         </View>
     );
 }
